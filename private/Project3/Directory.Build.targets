@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="dependencies\configs\mapper_config.props" Condition="Exists('dependencies\configs\mapper_config.props')" />
+
+  <!-- FLUSHCOMM_MAGIC_XOR: auto-generated at build time so driver and usermode share same value.
+       Generated when flush_comm_magic_xor_auto.h does not exist. Clean + Build gives fresh magic each time.
+       Set FlushCommDisableMagicXorAuto=true to skip (then use /DFLUSHCOMM_MAGIC_XOR=... manually). -->
+  <PropertyGroup>
+    <FlushCommDisableMagicXorAuto Condition="'$(FlushCommDisableMagicXorAuto)' == ''">false</FlushCommDisableMagicXorAuto>
+    <_FlushCommMagicXorFile>$(MSBuildThisFileDirectory)flush_comm_magic_xor_auto.h</_FlushCommMagicXorFile>
+  </PropertyGroup>
+  <Target Name="FlushComm_GenerateMagicXor"
+          BeforeTargets="PrepareForBuild"
+          Condition="'$(FlushCommDisableMagicXorAuto)' != 'true' and !Exists('$(_FlushCommMagicXorFile)')">
+    <PropertyGroup>
+      <_MagicXorGuid>$([System.Guid]::NewGuid().ToString("N").Substring(0,8))</_MagicXorGuid>
+    </PropertyGroup>
+    <WriteLinesToFile File="$(_FlushCommMagicXorFile)"
+                     Lines="#pragma once
+/* Auto-generated at build time - do not edit. Driver and usermode use same FLUSHCOMM_MAGIC.
+   Delete this file and rebuild to get a new value. */
+#ifndef FLUSHCOMM_MAGIC_XOR
+#define FLUSHCOMM_MAGIC_XOR  0x$(_MagicXorGuid)
+#endif"
+                     Overwrite="true"
+                     Encoding="utf-8" />
+    <Message Importance="normal" Text="[FlushComm] Generated MAGIC_XOR at build time: 0x$(_MagicXorGuid)" />
+  </Target>
+  <Target Name="FlushComm_CleanMagicXor" BeforeTargets="Clean">
+    <Delete Files="$(_FlushCommMagicXorFile)" Condition="Exists('$(_FlushCommMagicXorFile)')" />
+  </Target>
+
+  <!-- Registry/section suffix is now derived at runtime from FLUSHCOMM_MAGIC (no literal in binary).
+       Legacy: FlushCommRandomizeSuffix used to write flush_comm_obfuscation_override.h; that value
+       is no longer used for path building. Set FlushCommRandomizeSuffix to false to skip generating the file. -->
+  <PropertyGroup>
+    <FlushCommRandomizeSuffix Condition="'$(FlushCommRandomizeSuffix)' == ''">false</FlushCommRandomizeSuffix>
+  </PropertyGroup>
+
+  <Target Name="FlushComm_GenerateObfuscationSuffix"
+          BeforeTargets="PrepareForBuild"
+          Condition="'$(FlushCommRandomizeSuffix)' == 'true' and '$(Configuration)' == 'Release' and '$(MSBuildProjectName)' == 'driver'">
+    <PropertyGroup>
+      <_ObfSuffix>$([System.Guid]::NewGuid().ToString("N").Substring(0,6))</_ObfSuffix>
+      <_ObfOverrideFile>$(MSBuildThisFileDirectory)flush_comm_obfuscation_override.h</_ObfOverrideFile>
+    </PropertyGroup>
+    <WriteLinesToFile File="$(_ObfOverrideFile)"
+                     Lines="#pragma once/* Auto-generated - do not edit (legacy; path suffix now from MAGIC at runtime) */
+#define FLUSHCOMM_OBFUSCATION_SUFFIX  L&quot;$(_ObfSuffix)&quot;"
+                     Overwrite="true"
+                     Encoding="utf-8" />
+    <Message Importance="normal" Text="[FlushComm] Generated obfuscation suffix (legacy): $(_ObfSuffix)" />
+  </Target>
+
+  <!-- Generate mapper_output.h from mapper_config.props - loader and kdmapper both use MapperOutputName -->
+  <Target Name="Mapper_GenerateOutputHeader"
+          BeforeTargets="PrepareForBuild"
+          Condition="'$(MapperOutputName)' != ''">
+    <PropertyGroup>
+      <_MapperOutputFile>$(MSBuildThisFileDirectory)dependencies\configs\mapper_output.h</_MapperOutputFile>
+    </PropertyGroup>
+    <WriteLinesToFile File="$(_MapperOutputFile)"
+                     Lines="#pragma once
+#define MAPPER_EXE_BENIGN_NAME &quot;$(MapperOutputName).exe&quot;
+#define MAPPER_EXE_BENIGN_NAME_SET 1"
+                     Overwrite="true"
+                     Encoding="utf-8" />
+    <Message Importance="normal" Text="[Mapper] Output name: $(MapperOutputName).exe" />
+  </Target>
+</Project>

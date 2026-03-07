@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Aether.Mapper": {
+      "commandName": "Project",
+      "commandLineArgs": "-f \"C:\\Users\\elrin\\source\\repos\\GameTools\\Aether\\x64\\Debug\\Aether.sys\" -c true"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ii]ntermediate/
+kdmapper/x64/
+
+# NuGet
+packages/
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+
+# WDK / driver packages (optional: remove if you want to track them)
+private/Project3/driver/packages/
+private/Project3/packages/
+private/packages/
+
+# PDB offsets (machine-specific)
+SymbolsFromPDB/offsets.ini
+**/offsets.ini
+
+# IDE
+.idea/
+*.vcxproj.user
+
+# Nested kdmapper clone metadata (optional: keeps one linear history)
+# private/Project3/kdmapper_src/.git/

@@ -1,0 +1,46 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Frozen Public", "Project3.vcxproj", "{5B7FF1C6-BA11-44C5-B8C9-674BB43708BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aether.Mapper", "Aether.Mapper (1)\Aether.Mapper.csproj", "{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LegitMemory", "LegitMemory (1)\LegitMemory\LegitMemory.vcxproj", "{6FB2FDE0-2CF4-42BA-9DEB-F356282042B4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kdmapper", "kdmapper_src\kdmapper\kdmapper.vcxproj", "{518E0636-BA8F-459D-ACAC-81BD33475E3E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B7FF1C6-BA11-44C5-B8C9-674BB43708BD}.Debug|x64.ActiveCfg = Debug|x64
+		{5B7FF1C6-BA11-44C5-B8C9-674BB43708BD}.Debug|x64.Build.0 = Debug|x64
+		{5B7FF1C6-BA11-44C5-B8C9-674BB43708BD}.Debug|x86.ActiveCfg = Debug|Win32
+		{5B7FF1C6-BA11-44C5-B8C9-674BB43708BD}.Release|x64.ActiveCfg = Release|x64
+		{5B7FF1C6-BA11-44C5-B8C9-674BB43708BD}.Release|x64.Build.0 = Release|x64
+		{5B7FF1C6-BA11-44C5-B8C9-674BB43708BD}.Release|x86.ActiveCfg = Release|Win32
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Debug|x64.ActiveCfg = Debug|x64
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Debug|x64.Build.0 = Debug|x64
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Debug|x86.ActiveCfg = Debug|x86
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Release|x64.ActiveCfg = Release|x64
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Release|x64.Build.0 = Release|x64
+		{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}.Release|x86.ActiveCfg = Release|x86
+		{6FB2FDE0-2CF4-42BA-9DEB-F356282042B4}.Debug|x64.ActiveCfg = Debug|x64
+		{6FB2FDE0-2CF4-42BA-9DEB-F356282042B4}.Debug|x64.Build.0 = Debug|x64
+		{6FB2FDE0-2CF4-42BA-9DEB-F356282042B4}.Debug|x86.ActiveCfg = Debug|Win32
+		{6FB2FDE0-2CF4-42BA-9DEB-F356282042B4}.Release|x64.ActiveCfg = Release|x64
+		{6FB2FDE0-2CF4-42BA-9DEB-F356282042B4}.Release|x64.Build.0 = Release|x64
+		{6FB2FDE0-2CF4-42BA-9DEB-F356282042B4}.Release|x86.ActiveCfg = Release|Win32
+		{518E0636-BA8F-459D-ACAC-81BD33475E3E}.Debug|x64.ActiveCfg = Debug|x64
+		{518E0636-BA8F-459D-ACAC-81BD33475E3E}.Debug|x64.Build.0 = Debug|x64
+		{518E0636-BA8F-459D-ACAC-81BD33475E3E}.Debug|x86.ActiveCfg = Release|x64
+		{518E0636-BA8F-459D-ACAC-81BD33475E3E}.Release|x64.ActiveCfg = Release|x64
+		{518E0636-BA8F-459D-ACAC-81BD33475E3E}.Release|x64.Build.0 = Release|x64
+		{518E0636-BA8F-459D-ACAC-81BD33475E3E}.Release|x86.ActiveCfg = Release|x64
+	EndGlobalSection
+EndGlobal

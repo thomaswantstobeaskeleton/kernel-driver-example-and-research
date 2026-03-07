@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+; LargePageDrivers Setup for Codecave (Signed PING Execution)
+; Adds beep.sys so PING runs from signed Beep .data section - low detection.
+; Double-click to merge, then REBOOT.
+;
+; Path: HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management
+; Value: LargePageDrivers (REG_MULTI_SZ)
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
+"LargePageDrivers"=hex(7):62,00,65,00,65,00,70,00,2e,00,73,00,79,00,73,00,00,00,00,00
